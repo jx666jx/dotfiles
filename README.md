@@ -40,6 +40,10 @@ oh-my-zsh powerlevel10k theme
 - chezmoi 
     
     ```https://github.com/twpayne/chezmoi/releases```
+- fd
+
+    ```https://github.com/sharkdp/fd/releases```
+
 - fzf 
     
     ```https://github.com/junegunn/fzf/releases```
