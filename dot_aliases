@@ -73,9 +73,9 @@ alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 
 ### fzf
 export FZF_DEFAULT_OPTS="--style full --preview 'fzf-preview.sh {}' --height 100% --layout reverse --border --preview-window=wrap"
-export FZF_ALT_C_COMMAND="fd --type directory --exclude .venv --exclude .git"
+export FZF_ALT_C_COMMAND="fd --type directory --hidden --exclude .venv --exclude .git"
 export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
-export FZF_CTRL_T_COMMAND="fd --exclude .venv --exclude .git"
+export FZF_CTRL_T_COMMAND="fd --hidden --exclude .venv --exclude .git"
 export FZF_CTRL_T_OPTS="--preview '[ -d {} ] && tree -C {} || bat --color=always --style=numbers {}'"
 
 fzf-man-widget() {
