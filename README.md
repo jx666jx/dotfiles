@@ -7,11 +7,22 @@
     ```sh -c "$(curl -fsLS get.chezmoi.io)" -- init --one-shot https://github.com/jx666jx/dotfiles```
 
 # tools
+
+install these tools before cloning the dotfiles
+
 ## install linux default repo stuff
-```sudo apt install curl dnsutils fonts-powerline git htop jq netcat-traditional nmap```
+```sudo apt install curl dnsutils fonts-powerline git htop jq netcat-traditional nmap zsh```
 
 ## install oh-my-zsh
 ```sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"```
+
+oh-my-zsh auto-suggestions
+
+```git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions```
+
+oh-my-zsh powerlevel10k theme
+
+```git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"```
 
 ## install VSCode
 - arm 
