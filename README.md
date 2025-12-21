@@ -1,4 +1,13 @@
-## install default linux repo stuff
+# dotfiles setup
+- install chezmoi and dotfiles
+
+    ```sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply https://github.com/jx666jx/dotfiles```
+- install dotfiles with cehzmoi but remove chezmoi when done
+
+    ```sh -c "$(curl -fsLS get.chezmoi.io)" -- init --one-shot https://github.com/jx666jx/dotfiles```
+
+# tools
+## install linux default repo stuff
 ```sudo apt install curl dnsutils fonts-powerline git htop jq netcat-traditional nmap```
 
 ## install oh-my-zsh
