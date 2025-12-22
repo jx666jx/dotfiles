@@ -23,12 +23,10 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # change the command execution time stamp shown in the history command output.
-# You can set one of the optional three formats:
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 HIST_STAMPS="yyyy-mm-dd"
 
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
+# plugins can be found in $ZSH/plugins/
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git github gitignore vscode python pylint pip ansible aliases zsh-autosuggestions kubectl helm)
 
@@ -45,6 +43,10 @@ source $ZSH/oh-my-zsh.sh
 # source fzf
 source <(fzf --zsh)
 
+# source Atuin
+source $HOME/.atuin/bin/env
+eval "$(atuin init zsh)"
+
 # customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -53,6 +55,29 @@ if [ -f ~/.aliases ]; then
     . ~/.aliases
 fi
 
-# source Atuin
-source $HOME/.atuin/bin/env
-eval "$(atuin init zsh)"
+# ZSH specific 
+# bat
+alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
+alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
+
+# fzf
+fzf-man-widget() {
+  manpage="echo {} | sed 's/\([[:alnum:][:punct:]]*\) (\([[:alnum:]]*\)).*/\2 \1/'"
+  batman="${manpage} | xargs -r man | col -bx | bat --language=man --plain --color always --theme=\"Monokai Extended\""
+   man -k . | sort \
+   | awk -v cyan=$(tput setaf 6) -v blue=$(tput setaf 4) -v res=$(tput sgr0) -v bld=$(tput bold) '{ $1=cyan bld $1; $2=res blue $2; } 1' \
+   | fzf  \
+      -q "$1" \
+      --ansi \
+      --tiebreak=begin \
+      --prompt=' Man > '  \
+      --preview-window '50%,rounded,<50(up,85%,border-bottom)' \
+      --preview "${batman}" \
+      --bind "enter:execute(${manpage} | xargs -r man)" \
+      --bind "alt-c:+change-preview(cht.sh {1})+change-prompt(ﯽ Cheat > )" \
+      --bind "alt-m:+change-preview(${batman})+change-prompt( Man > )" \
+      --bind "alt-t:+change-preview(tldr --color=always {1})+change-prompt(ﳁ TLDR > )"
+  zle reset-prompt
+}
+bindkey '^h' fzf-man-widget
+zle -N fzf-man-widget

@@ -34,7 +34,7 @@ alias zshrc='. ~/.zshrc'
 alias zshrcv='vi ~/.zshrc'
 
 # what procs am i running
-alias pg='pgrep -u $USER -a -f '$1
+pg() { pgrep -u "$USER" -a -f "$1"; }
 
 # dig it
 alias digs='dig +short '
@@ -43,7 +43,7 @@ alias digsr='dig @1.1.1.1 +short'
 ### VSCode
 alias c='code'
 # vscode refresh IPC
-vscri () {
+vscri() {
    export VSCODE_IPC_HOOK_CLI=$(lsof 2>/dev/null | grep $UID/vscode-ipc | awk '{print $(NF-1)}' | head -n 1) 
 }
 
@@ -68,8 +68,6 @@ alias bathelp='bat --plain --language=help'
 help() {
     "$@" --help 2>&1 | bathelp
 }
-alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
-alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 
 ### fzf
 export FZF_DEFAULT_OPTS="--style full --preview 'fzf-preview.sh {}' --height 100% --layout reverse --border --preview-window=wrap"
@@ -78,29 +76,8 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
 export FZF_CTRL_T_COMMAND="fd --hidden --exclude .venv --exclude .git"
 export FZF_CTRL_T_OPTS="--preview '[ -d {} ] && tree -C {} || bat --color=always --style=numbers {}'"
 
-fzf-man-widget() {
-  manpage="echo {} | sed 's/\([[:alnum:][:punct:]]*\) (\([[:alnum:]]*\)).*/\2 \1/'"
-  batman="${manpage} | xargs -r man | col -bx | bat --language=man --plain --color always --theme=\"Monokai Extended\""
-   man -k . | sort \
-   | awk -v cyan=$(tput setaf 6) -v blue=$(tput setaf 4) -v res=$(tput sgr0) -v bld=$(tput bold) '{ $1=cyan bld $1; $2=res blue $2; } 1' \
-   | fzf  \
-      -q "$1" \
-      --ansi \
-      --tiebreak=begin \
-      --prompt=' Man > '  \
-      --preview-window '50%,rounded,<50(up,85%,border-bottom)' \
-      --preview "${batman}" \
-      --bind "enter:execute(${manpage} | xargs -r man)" \
-      --bind "alt-c:+change-preview(cht.sh {1})+change-prompt(ﯽ Cheat > )" \
-      --bind "alt-m:+change-preview(${batman})+change-prompt( Man > )" \
-      --bind "alt-t:+change-preview(tldr --color=always {1})+change-prompt(ﳁ TLDR > )"
-  zle reset-prompt
-}
-bindkey '^h' fzf-man-widget
-zle -N fzf-man-widget
-
 ### ripgrep
-rgg () {
+rgg() {
 RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
 INITIAL_QUERY="${*:-}"
 fzf --ansi --disabled --query "$INITIAL_QUERY" \
@@ -113,27 +90,27 @@ fzf --ansi --disabled --query "$INITIAL_QUERY" \
 }
 
 # make dir and enter
-mcd () {
+mcd() {
     mkdir -p $1
     cd $1
 }
 
 # show formatted json
-jxson () {
+jxson() {
     cat $1 | $PYTHON -c "import sys, json; parse=(json.load(sys.stdin)); print (json.dumps(parse, indent=4))"
 }
 
 # tmux stuff
 alias tls='tmux ls'
-tat () {
+tat() {
     select sel in $(tmux ls -F '#{session_name}' ); do break; done
     tmux attach -t "$sel"
 }
-tla () {
+tla() {
     select sel in $(tmux ls -F '#{session_name}'); do break; done
     tmux attach -t "$sel"
 }
-logz () {
+logz() {
     tmux new-session -d -s logz -n 'sys_logs' >/dev/null
     tmux splitw -v -t logz:1.1
     tmux select-pane -t logz:1.1
@@ -152,18 +129,18 @@ logz () {
 }
 
 # ansible shorts
-apn () {
+apn() {
  ansible-playbook $1 -i ~/ansible-inventory/inventory-nsx.yml
 }
-apc () {
+apc() {
  ansible-playbook $1 -i ~/ansible-inventory/inventory-core.yml
 }
-apcv () {
+apcv() {
  ansible-playbook -vvv $1 -i ~/ansible-inventory/inventory-core.yml
 }
 
 # python stuff
-cvenv () {
+cvenv() {
     $PYTHON -m venv .venv --prompt=$1
     source .venv/bin/activate
     pip install wheel 
@@ -172,17 +149,17 @@ cvenv () {
         pip install -r requirements.txt
     fi
 }
-pipin () {
+pipin() {
     pip install $*
     #pip install  --no-index --find-links file://$PROJECT/ $*
 }
-pipup (){
+pipup(){
     pip list --outdated --format=json | jq -r '.[] | "\(.name)==\(.latest_version)"' | xargs -n1 pip install -U
 }
-pipl () {
+pipl() {
     pip list
 }
-pipfree () {
+pipfree() {
     pip freeze --all > requirements.txt
 }
 

@@ -57,7 +57,11 @@ export EDITOR="vim"
 export VISUAL="vim"
 
 # source fzf
-source <(fzf --zsh)
+source <(fzf --bash)
+
+# source Atuin
+. "$HOME/.atuin/bin/env"
+eval "$(atuin init bash)"
 
 # load those AKAs
 if [ -f ~/.aliases ]; then
@@ -65,8 +69,3 @@ if [ -f ~/.aliases ]; then
 fi
 
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
-
-# source Atuin
-. "$HOME/.atuin/bin/env"
-
-eval "$(atuin init bash)"
