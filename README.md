@@ -33,17 +33,19 @@ oh-my-zsh powerlevel10k theme
 ```https://code.visualstudio.com/docs/?dv=linux64_deb```
 
 
-## copy these binaries to ~/.local/bin
+## get these binaries into your $PATH (~/.local/bin)
 - bat 
     
     ```https://github.com/sharkdp/bat/releases```
 - chezmoi 
     
     ```https://github.com/twpayne/chezmoi/releases```
+- docker
+
+    ```https://docs.docker.com/engine/install/```
 - fd
 
     ```https://github.com/sharkdp/fd/releases```
-
 - fzf 
     
     ```https://github.com/junegunn/fzf/releases```
@@ -53,11 +55,12 @@ oh-my-zsh powerlevel10k theme
 - glab
 
     ```https://gitlab.com/gitlab-org/cli/-/releases```
-
-
 - ripgrep 
     
     ```https://github.com/BurntSushi/ripgrep/releases```
+- talosctl
+
+    ```https://github.com/siderolabs/talos/releases```
 - kubectl
     - Grab the latest version for platform. (update the url for amd or arm)
     
