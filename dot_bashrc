@@ -60,7 +60,6 @@ export VISUAL="vim"
 source <(fzf --bash)
 
 # source Atuin
-. "$HOME/.atuin/bin/env"
 eval "$(atuin init bash)"
 
 # load those AKAs
