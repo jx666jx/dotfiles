@@ -68,4 +68,7 @@ if [ -f ~/.aliases ]; then
     . ~/.aliases
 fi
 
+# talos
+export TALOSCONFIG=~/projects/talos/talosconfig
+
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
