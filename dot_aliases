@@ -100,11 +100,6 @@ mcd() {
     cd $1
 }
 
-# what procs am i running
-if [[ "$OSTYPE" != "darwin"* ]]; then
-  pg() { pgrep -u "$USER" -a -f "$1"; }
-fi
-
 # tmux stuff
 alias tls='tmux ls'
 tat() {
