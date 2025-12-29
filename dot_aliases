@@ -50,6 +50,9 @@ vscri() {
 ### GLab
 alias gl='glab'
 
+### talosctl
+alias t='talosctl'
+
 ### k8s
 alias kl='~/bin/klogin.sh'
 alias k='kubectl '

@@ -68,6 +68,10 @@ if [ -f ~/.aliases ]; then
 fi
 
 # talos
-export TALOSCONFIG=~/projects/talos/talosconfig
+export TALOSCONFIG=~/projects/talos/talos/talosconfig
+# make it easier to use, usu this cluster and node
+talosctl config context jigoku
+talosctl config endpoint 10.3.0.13
+talosctl config node 10.3.0.13
 
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
