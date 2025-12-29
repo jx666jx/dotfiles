@@ -8,10 +8,7 @@
 
 # tools
 
-install these tools before cloning the dotfiles
-
-## install linux default repo stuff
-```sudo apt install curl dnsutils fonts-powerline git htop jq netcat-traditional nmap zsh```
+install these before cloning the dotfiles
 
 ## install oh-my-zsh
 ```sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"```
@@ -31,9 +28,21 @@ oh-my-zsh powerlevel10k theme
 - X64
 
 ```https://code.visualstudio.com/docs/?dv=linux64_deb```
+- mac
 
+```https://code.visualstudio.com/docs?dv=osx```
 
-## get these binaries into your $PATH (~/.local/bin)
+## mac os
+### brew install
+```brew update```
+
+```brew install bat chezmoi curl docker fd fzf gh glab htop jq netcat nmap ripgrep talosctl kubectl kubectx k9s pgrep```
+
+## linux
+### install default repo stuff
+```sudo apt install curl dnsutils fonts-powerline git htop jq netcat-traditional nmap pgrep zsh```
+
+### get these binaries into your $PATH (~/.local/bin)
 - bat 
     
     ```https://github.com/sharkdp/bat/releases```

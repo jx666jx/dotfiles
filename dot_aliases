@@ -33,9 +33,6 @@ alias sv='source .venv/bin/activate'
 alias zshrc='. ~/.zshrc'
 alias zshrcv='vi ~/.zshrc'
 
-# what procs am i running
-pg() { pgrep -u "$USER" -a -f "$1"; }
-
 # dig it
 alias digs='dig +short '
 alias digsr='dig @1.1.1.1 +short'
@@ -92,16 +89,21 @@ fzf --ansi --disabled --query "$INITIAL_QUERY" \
     --bind 'enter:become(vim {1} +{2})'
 }
 
+# show formatted json
+jxson() {
+    cat $1 | $PYTHON -c "import sys, json; parse=(json.load(sys.stdin)); print (json.dumps(parse, indent=4))"
+}
+
 # make dir and enter
 mcd() {
     mkdir -p $1
     cd $1
 }
 
-# show formatted json
-jxson() {
-    cat $1 | $PYTHON -c "import sys, json; parse=(json.load(sys.stdin)); print (json.dumps(parse, indent=4))"
-}
+# what procs am i running
+if [[ "$OSTYPE" != "darwin"* ]]; then
+  pg() { pgrep -u "$USER" -a -f "$1"; }
+fi
 
 # tmux stuff
 alias tls='tmux ls'
