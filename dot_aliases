@@ -8,6 +8,11 @@ BIN=~/.local/bin
 DOWNLOADS=~/dump
 PYTHON=python3.13
 
+# Use gls if available (macOS with coreutils), otherwise use ls
+if command -v gls >/dev/null 2>&1; then
+  alias ls='gls --color=auto'
+fi
+
 # list aliases
 alias ll='ls -la --group-directories-first'
 alias la='ls -l --group-directories-first'
