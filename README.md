@@ -36,11 +36,11 @@ oh-my-zsh powerlevel10k theme
 ### brew install
 ```brew update```
 
-```brew install bat chezmoi curl coreutils docker fd fzf gh glab htop jq netcat nmap ripgrep talosctl kubectl kubectx k9s pgrep```
+```brew install atuin bat chezmoi curl coreutils docker fd fzf gh glab htop ipcalc jq netcat nmap ripgrep talosctl kubectl kubectx k9s pgrep```
 
 ## linux
 ### install default repo stuff
-```sudo apt install curl dnsutils fonts-powerline git htop jq netcat-traditional nmap pgrep zsh```
+```sudo apt install curl dnsutils fonts-powerline git htop ipcalc jq netcat-traditional nmap pgrep zsh```
 
 ### get these binaries into your $PATH (~/.local/bin)
 - bat 
