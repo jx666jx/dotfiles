@@ -36,7 +36,7 @@ oh-my-zsh powerlevel10k theme
 ### brew install
 ```brew update```
 
-```brew install atuin bat chezmoi curl coreutils docker fd fzf gh glab htop ipcalc jq netcat nmap ripgrep talosctl kubectl kubectx k9s pgrep```
+```brew install atuin bat chezmoi curl coreutils docker fd fzf gh glab htop ipcalc jq netcat nmap ripgrep talosctl kubectl kubectx k9s pgrep helm```
 
 ## linux
 ### install default repo stuff
@@ -84,3 +84,7 @@ oh-my-zsh powerlevel10k theme
 - k9s
     
     ```https://github.com/derailed/k9s/releases```
+
+- helm
+
+    ```https://github.com/helm/helm/releases```
