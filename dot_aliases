@@ -176,6 +176,9 @@ function cd() {
   builtin cd "$@"
   ## Default path to virtualenv in your projects
   DEFAULT_ENV_PATH="./.venv"
+  if [[ ! -f "${DEFAULT_ENV_PATH}/bin/activate" ]] && [[ -f "./venv/bin/activate" ]]; then
+    DEFAULT_ENV_PATH="./venv"
+  fi
   function activate_venv() {
     if [[ -f "${DEFAULT_ENV_PATH}/bin/activate" ]] ; then 
       source "${DEFAULT_ENV_PATH}/bin/activate"
