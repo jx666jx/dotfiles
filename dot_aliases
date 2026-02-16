@@ -171,32 +171,53 @@ pipfree() {
     pip freeze --all > requirements.txt
 }
 
-# cd function that will activate venv in current path
+# cd function that will activate venv in current path, searching up directory tree
 function cd() {
   builtin cd "$@"
-  ## Default path to virtualenv in your projects
-  DEFAULT_ENV_PATH="./.venv"
-  if [[ ! -f "${DEFAULT_ENV_PATH}/bin/activate" ]] && [[ -f "./venv/bin/activate" ]]; then
-    DEFAULT_ENV_PATH="./venv"
-  fi
+  
+  function find_venv() {
+    local current_dir="$PWD"
+    while [[ "$current_dir" != "/" ]]; do
+      if [[ -f "$current_dir/.venv/bin/activate" ]]; then
+        echo "$current_dir/.venv"
+        return 0
+      fi
+      if [[ -f "$current_dir/venv/bin/activate" ]]; then
+        echo "$current_dir/venv"
+        return 0
+      fi
+      current_dir="$(dirname "$current_dir")"
+    done
+    return 1
+  }
+  
   function activate_venv() {
-    if [[ -f "${DEFAULT_ENV_PATH}/bin/activate" ]] ; then 
-      source "${DEFAULT_ENV_PATH}/bin/activate"
+    local venv_path="$1"
+    if [[ -f "${venv_path}/bin/activate" ]]; then
+      source "${venv_path}/bin/activate"
       echo -e "\e[42mactivating:\e[0m ${VIRTUAL_ENV}"
     fi
   }
-  if [[ -z "$VIRTUAL_ENV" ]] ; then
-    activate_venv
+  
+  local found_venv=$(find_venv)
+  
+  if [[ -z "$VIRTUAL_ENV" ]]; then
+    # No venv currently active, try to activate one
+    if [[ -n "$found_venv" ]]; then
+      activate_venv "$found_venv"
+    fi
   else
-    ## check the current folder belong to earlier VIRTUAL_ENV folder
-    # if yes then do nothing
-    # else deactivate then run a new env folder check
-      parentdir="$(dirname ${VIRTUAL_ENV})"
-      if [[ "$PWD"/ != "$parentdir"/* ]] ; then
-        echo -e "\e[0;41mdeactivating:\e[0m ${VIRTUAL_ENV}"
-        deactivate
-        activate_venv
-      fi
+    # A venv is currently active
+    if [[ -n "$found_venv" ]] && [[ "$found_venv" != "$VIRTUAL_ENV" ]]; then
+      # Found a different venv, switch to it
+      echo -e "\e[0;41mdeactivating:\e[0m ${VIRTUAL_ENV}"
+      deactivate
+      activate_venv "$found_venv"
+    elif [[ -z "$found_venv" ]]; then
+      # No venv found, deactivate current
+      echo -e "\e[0;41mdeactivating:\e[0m ${VIRTUAL_ENV}"
+      deactivate
+    fi
   fi
 }
 
