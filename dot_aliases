@@ -27,10 +27,10 @@ alias latr='ls -latr'
 # cd aliases
 alias cdb='cd '$BIN
 alias cdd='cd '$DOWNLOADS
-cdp() {
+function cdp {
   cd "$PROJECT/$1"
 }
-cds() {
+function cds {
   cd "$SRE/$1"
 }
 alias cdz='cd '$ZSH_CUSTOM
