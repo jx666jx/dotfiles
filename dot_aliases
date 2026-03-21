@@ -60,7 +60,7 @@ alias gl='glab'
 alias t='talosctl'
 
 ### k8s
-alias kl='~/bin/klogin.sh'
+alias kl='klogin.sh'
 alias k='kubectl '
 alias kns='kubens '
 alias kcx='kubectx '
