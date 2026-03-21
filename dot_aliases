@@ -27,8 +27,8 @@ alias latr='ls -latr'
 # cd aliases
 alias cdb='cd '$BIN
 alias cdd='cd '$DOWNLOADS
-function cdp { cd "$PROJECT${1:+/${(j:/:)@}}"; }
-function cds { cd "$SRE${1:+/${(j:/:)@}}"; }
+cdp() { cd "$PROJECT${1:+/${(j:/:)@}}"; }
+cds() { cd "$SRE${1:+/${(j:/:)@}}"; }
 alias cdz='cd '$ZSH_CUSTOM
 
 # activate current venv
