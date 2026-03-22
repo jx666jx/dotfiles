@@ -43,7 +43,14 @@ alias digs='dig +short '
 alias digsr='dig @1.1.1.1 +short'
 
 ### VSCode
-alias c='code'
+unalias c 2>/dev/null
+c() {
+    if command -v code >/dev/null 2>&1; then
+        code "$@"
+    else
+        open -a "Visual Studio Code" "$@"
+    fi
+}
 # vscode refresh IPC
 vscri() {
    export VSCODE_IPC_HOOK_CLI=$(lsof 2>/dev/null | grep $UID/vscode-ipc | awk '{print $(NF-1)}' | head -n 1) 
