@@ -37,6 +37,9 @@ bindkey '^ ' forward-word
 export EDITOR="vim"
 export VISUAL="vim"
 
+# Re-source safety: clear literal `-h`/`--help` globals before loading OMZ.
+builtin unalias -- \-h \--help 2>/dev/null
+
 # source oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
@@ -87,4 +90,3 @@ export TALOSCONFIG=~/projects/talos/talos/talosconfig
 talosctl config context jigoku
 talosctl config endpoint 10.3.0.13
 talosctl config node 10.3.0.13
-
