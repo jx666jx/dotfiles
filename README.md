@@ -55,6 +55,9 @@ oh-my-zsh powerlevel10k theme
 - fd
 
     ```https://github.com/sharkdp/fd/releases```
+- flux
+
+    ```https://github.com/fluxcd/flux2/releases```
 - fzf 
     
     ```https://github.com/junegunn/fzf/releases```
