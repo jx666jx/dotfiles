@@ -85,7 +85,7 @@ help() {
 }
 
 ### fzf
-export FZF_DEFAULT_OPTS="--style full --preview 'fzf-preview.sh {}' --height 100% --layout reverse --border --preview-window=wrap"
+export FZF_DEFAULT_OPTS="--style full --preview 'fzf-preview.sh {}' --height 50% --layout reverse --border --preview-window=wrap"
 export FZF_ALT_C_COMMAND="fd --type directory --hidden --exclude .venv --exclude .git"
 export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
 export FZF_CTRL_T_COMMAND="fd --hidden --exclude .venv --exclude .git"

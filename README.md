@@ -43,19 +43,22 @@ oh-my-zsh powerlevel10k theme
 
 ```brew update```
 
-```brew install atuin bat chezmoi curl coreutils docker fd fzf gh glab htop ipcalc jq netcat nmap ripgrep talosctl kubectl kubectx k9s pgrep helm oras```
+```brew install atuin bat calicoctl chezmoi curl coreutils docker fd fzf gh glab htop ipcalc jq netcat nmap ripgrep talosctl kubectl kubectx k9s pgrep helm oras uv```
 
 ### linux
 
 #### install default repo stuff
 
-```sudo apt install curl dnsutils fonts-powerline git htop ipcalc jq netcat-traditional nmap pgrep zsh```
+```sudo apt install curl dnsutils fonts-powerline git htop ipcalc jq netcat-traditional nmap pgrep wget zsh```
 
 #### get these binaries into your $PATH (~/.local/bin)
 
 - bat
 
     ```https://github.com/sharkdp/bat/releases```
+- calicoctl
+
+    ```https://github.com/projectcalico/calico/releases```
 - chezmoi
 
     ```https://github.com/twpayne/chezmoi/releases```
@@ -103,3 +106,6 @@ oh-my-zsh powerlevel10k theme
 - talosctl
 
     ```https://github.com/siderolabs/talos/releases```
+- uv
+
+    ```https://github.com/astral-sh/uv/releases```
