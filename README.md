@@ -41,9 +41,11 @@ oh-my-zsh powerlevel10k theme
 
 #### brew install
 
+```brew tap hashicorp/tap```
+
 ```brew update```
 
-```brew install atuin bat calicoctl chezmoi curl coreutils docker fd fzf gh glab htop ipcalc jq netcat nmap ripgrep talosctl kubectl kubectx k9s pgrep helm oras uv```
+```brew install argocd atuin bat calicoctl chezmoi curl coreutils docker fd fzf gh glab htop ipcalc jq netcat nmap ripgrep talosctl kubectl kubectx k9s pgrep helm oras uv hashicorp/tap/terraform```
 
 ### linux
 
@@ -53,6 +55,10 @@ oh-my-zsh powerlevel10k theme
 
 #### get these binaries into your $PATH (~/.local/bin)
 
+- argocd
+
+
+    ```https://github.com/argoproj/argo-cd```
 - bat
 
     ```https://github.com/sharkdp/bat/releases```
@@ -103,6 +109,9 @@ oh-my-zsh powerlevel10k theme
 - ripgrep
 
     ```https://github.com/BurntSushi/ripgrep/releases```
+- terraform
+
+    ```https://github.com/hashicorp/terraform/releases```
 - talosctl
 
     ```https://github.com/siderolabs/talos/releases```

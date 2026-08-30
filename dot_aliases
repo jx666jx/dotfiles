@@ -6,6 +6,7 @@ SRE=~/projects-sre
 PROJECT=~/projects
 BIN=~/.local/bin
 DOWNLOADS=~/dump
+TMP=~/tmp
 PYTHON=python3.13
 
 # Use gls if available (macOS with coreutils), otherwise use ls
@@ -29,6 +30,7 @@ alias cdb='cd '$BIN
 alias cdd='cd '$DOWNLOADS
 cdp() { cd "$PROJECT${1:+/${(j:/:)@}}"; }
 cds() { cd "$SRE${1:+/${(j:/:)@}}"; }
+alias cdt='cd '$TMP
 alias cdz='cd '$ZSH_CUSTOM
 
 # activate current venv
@@ -53,7 +55,7 @@ c() {
 }
 # vscode refresh IPC
 vscri() {
-   export VSCODE_IPC_HOOK_CLI=$(lsof 2>/dev/null | grep $UID/vscode-ipc | awk '{print $(NF-1)}' | head -n 1) 
+   export VSCODE_IPC_HOOK_CLI=$(lsof 2>/dev/null | grep $UID/vscode-ipc | awk '{print $(NF-1)}' | head -n 1)
 }
 
 ### GLab
@@ -73,6 +75,9 @@ alias h='helm '
 
 ### docker
 alias d='sudo docker '
+
+### terraform
+alias tf='terraform '
 
 ### bat
 alias cat='bat -p --paging=never'
@@ -158,7 +163,7 @@ apcv() {
 cvenv() {
     $PYTHON -m venv .venv --prompt=$1
     source .venv/bin/activate
-    pip install wheel 
+    pip install wheel
     pipup
     if [ -f requirements.txt ]; then
         pip install -r requirements.txt
@@ -181,7 +186,7 @@ pipfree() {
 # cd function that will activate venv in current path, searching up directory tree
 function cd() {
   builtin cd "$@"
-  
+ 
   function find_venv() {
     local current_dir="$PWD"
     while [[ "$current_dir" != "/" ]]; do
@@ -197,7 +202,7 @@ function cd() {
     done
     return 1
   }
-  
+ 
   function activate_venv() {
     local venv_path="$1"
     if [[ -f "${venv_path}/bin/activate" ]]; then
@@ -205,9 +210,9 @@ function cd() {
       echo -e "\e[42mactivating:\e[0m ${VIRTUAL_ENV}"
     fi
   }
-  
+ 
   local found_venv=$(find_venv)
-  
+ 
   if [[ -z "$VIRTUAL_ENV" ]]; then
     # No venv currently active, try to activate one
     if [[ -n "$found_venv" ]]; then

@@ -4,7 +4,7 @@ export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 # Path to Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# Set name of the oh-my-zsh theme 
+# Set name of the oh-my-zsh theme
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -21,7 +21,7 @@ HIST_STAMPS="yyyy-mm-dd"
 
 # plugins can be found in $ZSH/plugins/
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-prompt github gitignore vscode python pylint pip ansible aliases zsh-autosuggestions kubectl helm)
+plugins=(git git-prompt github gitignore python pylint pip ansible aliases zsh-autosuggestions kubectl helm argocd terraform docker)
 
 # zsh-autosuggestions ctrl-space progress one word
 bindkey '^ ' forward-word
@@ -53,7 +53,7 @@ if [ -f ~/.aliases ]; then
     . ~/.aliases
 fi
 
-# ZSH specific 
+# ZSH specific
 # bat
 alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
 alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
