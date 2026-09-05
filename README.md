@@ -45,7 +45,7 @@ oh-my-zsh powerlevel10k theme
 
 ```brew update```
 
-```brew install argocd atuin bat calicoctl chezmoi curl coreutils docker fd fzf gh glab htop ipcalc jq netcat nmap ripgrep talosctl kubectl kubectx k9s pgrep helm oras uv hashicorp/tap/terraform```
+```brew install argocd atuin bat calicoctl chezmoi curl coreutils docker fd fzf gh glab htop ipcalc jq netcat nmap ripgrep talosctl kubectl kubectx k9s pgrep helm oras uv kustomize hashicorp/tap/terraform```
 
 ### linux
 
@@ -103,6 +103,9 @@ oh-my-zsh powerlevel10k theme
 - k9s
 
     ```https://github.com/derailed/k9s/releases```
+- kustomize
+
+    ```https://github.com/kubernetes-sigs/kustomize/releases```
 - oras
 
     ```https://github.com/oras-project/oras/releases```
