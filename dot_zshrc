@@ -21,7 +21,7 @@ HIST_STAMPS="yyyy-mm-dd"
 
 # plugins can be found in $ZSH/plugins/
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-prompt github gitignore python pylint pip ansible aliases zsh-autosuggestions kubectl helm argocd terraform docker)
+plugins=(git git-prompt github gitignore python pylint pip ansible aliases zsh-autosuggestions kubectl helm argocd terraform docker kustomize)
 
 # zsh-autosuggestions ctrl-space progress one word
 bindkey '^ ' forward-word
